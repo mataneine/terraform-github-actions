@@ -115,6 +115,7 @@ function main {
   source ${scriptDir}/terraform_import.sh
   source ${scriptDir}/terraform_taint.sh
   source ${scriptDir}/terraform_destroy.sh
+  source ${scriptDir}/terraform_show.sh
 
   parseInputs
   configureCLICredentials
@@ -157,6 +158,10 @@ function main {
       installTerraform
       terraformDestroy ${*}
       ;;
+    show)
+      installTerraform
+      terraformShow ${*}
+      ;;      
     *)
       echo "Error: Must provide a valid value for terraform_subcommand"
       exit 1
